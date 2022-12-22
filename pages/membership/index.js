@@ -86,7 +86,7 @@ let MembershipList = [
 function MembershipPage() {
   return (
     <>
-      <HeaderOne />
+      
       <PageHeader title={"Membership Levels"} curPage={"Membership"} />
       <div className="membership padding-top padding-bottom">
         <div className="container">
@@ -128,7 +128,7 @@ function MembershipPage() {
           </div>
         </div>
       </div>
-      <Footer />
+ 
     </>
   );
 }

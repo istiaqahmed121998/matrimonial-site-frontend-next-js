@@ -1,10 +1,7 @@
-import { Component } from "react";
 
-class SelectAge extends Component {
-    render() { 
-        const {select} = this.props;
+function SelectAge(props) {
         return (
-            <select defaultValue={select}>
+            <select defaultValue={props.select}>
                 <option value="18">18</option>
                 <option value="19">19</option>
                 <option value="20">20</option>
@@ -30,7 +27,7 @@ class SelectAge extends Component {
                 <option value="40">40</option>
             </select>
         );
-    }
+    
 }
  
 export default SelectAge;

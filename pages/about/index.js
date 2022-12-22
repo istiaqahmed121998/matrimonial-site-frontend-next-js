@@ -11,8 +11,7 @@ import HeaderTwo from "../../component/layout/headertwo";
 export default function about() {
   return (
     <>
-      <HeaderOne />
-      <FooterThree />
+ 
     </>
   );
 }

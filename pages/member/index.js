@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FooterThree from "../../component/layout/footerthree";
+import useSWR from 'swr';
 import PageHeader from "../../component/layout/pageheader";
 import AboutSectionFour from "../../component/section/aboutfour";
 import Pagination from "../../component/section/pagination";
@@ -10,12 +10,15 @@ import SelectProduct from "../../component/select/selectproduct";
 import HeaderOne from "../../component/layout/header";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import SelectIAm from "../../component/select/SelectIAm";
 
 function MembersPage() {
+  const { data, error } = useSWR('/users')
   function modalview() {
     document.querySelector(".modal").classList.toggle("show");
     document.querySelector("body").classList.toggle("overlay");
   }
+  
   const [sortBy, setSortBy] = useState("Newest");
   const [MemberContentList, setmemberContentList] = useState([
     {
@@ -54,25 +57,44 @@ function MembersPage() {
       className: "member__activity member__activity--ofline",
     },
   ]);
+  const [iAm, setIAm] = useState("self");
+  const [gender, setGender] = useState("female");
+  const [ageFrom, setAgeFrom] = useState("18");
+  const [ageTo, setAgeTo] = useState("40");
+  const [country, setCountry] = useState("Bangladesh");
+  const handleChangeIAm = (selectedOption) => {
+    setIAm(selectedOption);
+  };
+  const handleChangeGender = (selectedOption) => {
+    setGender(selectedOption);
+  };
+  const handleChangeCountry = (selectedOption) => {
+    setCountry(selectedOption);
+  };
+  const handleChangeAgeFrom = (selectedOption) => {
+    setAgeFrom(selectedOption);
+  };
+  const handleChangeAgeTo = (selectedOption) => {
+    setAgeTo(selectedOption);
+  };
+  const [isLoading, setIsLoading] = useState(false);
   const changeSelect = (option) => {
     setSortBy(option);
   };
   useEffect(() => {
-    if(sortBy==='Newest'){
-        let sortedByTitle =[...MemberContentList].sort((a,b) => a.title - b.title);
-        setmemberContentList(sortedByTitle)
-        console.log(sortedByTitle)
-    }
-    else if(sortBy==='Old'){
-        console.log(sortBy)
-        setmemberContentList([...MemberContentList].reverse())
+    if (sortBy === "Newest") {
+      let sortedByTitle = [...MemberContentList].sort(
+        (a, b) => a.title - b.title
+      );
+      setmemberContentList(sortedByTitle);
+    } else if (sortBy === "Old") {
+      setmemberContentList([...MemberContentList].reverse());
     }
   }, [sortBy]);
 
-
   return (
     <>
-      <HeaderOne />
+
       <PageHeader title={"Ollya All Members"} curPage={"All Members"} />
       <AboutSectionFour />
       <div className="member member--style2 padding-top padding-bottom">
@@ -111,42 +133,70 @@ function MembersPage() {
             <div className="group__bottom--body bg-white">
               <div className="group__bottom--group">
                 <div className="row g-4 justify-content-center mx-12-none row-cols-1">
-                  {MemberContentList.map((val, i) => (
-                    <div className="col" key={i}>
-                      <div className="activity__item">
-                        <div className="activity__inner">
-                          <div className="row">
-                            <div className="col col-lg-2">
-                              <div className="member__thumb">
-                                <Image
-                                  src={val.imgUrl}
-                                  alt={val.imgAlt}
-                                  width={160}
-                                  height={160}
-                                />
+                  {!isLoading ? (
+                    MemberContentList.map((val, i) => (
+                      <div className="col" key={i}>
+                        <div className="activity__item">
+                          <div className="activity__inner">
+                            <div className="row">
+                              <div className="col col-lg-2">
+                                <div className="member__thumb">
+                                  <Image
+                                    src={val.imgUrl}
+                                    alt={val.imgAlt}
+                                    width={160}
+                                    height={160}
+                                  />
+                                </div>
                               </div>
-                            </div>
-                            <div className="col col-lg-9 col-sm-12 col-12">
-                              <div className="activity__content">
-                                <h5>
-                                  <Link href="/member-single">{val.title}</Link>
-                                  <span>{val.text}</span>
-                                </h5>
-                                <p>{val.activity}</p>
-                                <p>
-                                  Excepteur laboris adipisicing est nisi cillum
-                                  pariatur nulla velit. Magna duis proident
-                                  laborum quis aute consequat mollit qui labore.
-                                  Id esse minim tempor occaecat sit quis
-                                  incididunt ut dolor pariatur.
-                                </p>
+                              <div className="col col-lg-9 col-sm-12 col-12">
+                                <div className="activity__content">
+                                  <h5>
+                                    <Link href="/member-single">
+                                      {val.title}
+                                    </Link>
+                                    <span>{val.text}</span>
+                                  </h5>
+                                  <p>{val.activity}</p>
+                                  <p>
+                                    Excepteur laboris adipisicing est nisi
+                                    cillum pariatur nulla velit. Magna duis
+                                    proident laborum quis aute consequat mollit
+                                    qui labore. Id esse minim tempor occaecat
+                                    sit quis incididunt ut dolor pariatur.
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  ) : (
+                    <>
+                      <ul>
+                        {[...Array(6)].map((_, i) => (
+                          <>
+                            <li>
+                              <div className="col">
+                                <div className="activity__item">
+                                  <div className="row my-2">
+                                    <p class="card-text placeholder-glow">
+                                      <span class="placeholder col-7"></span>
+                                      <span class="placeholder col-4"></span>
+                                      <span class="placeholder col-4"></span>
+                                      <span class="placeholder col-6"></span>
+                                      <span class="placeholder col-8"></span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </>
+                        ))}
+                      </ul>
+                    </>
+                  )}
                 </div>
                 <div className="member__pagination mt-4">
                   <div className="member__pagination--left">
@@ -179,15 +229,15 @@ function MembersPage() {
                 <div className="banner__list">
                   <div className="row align-items-center row-cols-1">
                     <div className="col">
-                      <label>I am a</label>
+                      <label>I am on behalf of</label>
                       <div className="banner__inputlist">
-                        <SelectGender select={"male"} />
+                        <SelectIAm select={iAm} handleChange={handleChangeIAm} />
                       </div>
                     </div>
                     <div className="col">
                       <label>Looking for</label>
                       <div className="banner__inputlist">
-                        <SelectGender select={"female"} />
+                        <SelectGender select={gender} handleChange={handleChangeGender} />
                       </div>
                     </div>
                     <div className="col">
@@ -195,12 +245,12 @@ function MembersPage() {
                       <div className="row g-3">
                         <div className="col-6">
                           <div className="banner__inputlist">
-                            <SelectAge select={"18"} />
+                            <SelectAge select={ageFrom} handleChange={handleChangeAgeFrom} />
                           </div>
                         </div>
                         <div className="col-6">
                           <div className="banner__inputlist">
-                            <SelectAge select={"25"} />
+                            <SelectAge select={ageTo} handleChange={handleChangeAgeTo} />
                           </div>
                         </div>
                       </div>
@@ -208,7 +258,7 @@ function MembersPage() {
                     <div className="col">
                       <label>Country</label>
                       <div className="banner__inputlist">
-                        <SelectCountry select={"Bangladesh"} />
+                        <SelectCountry select={country} handleChange={handleChangeCountry} />
                       </div>
                     </div>
                     <div className="col">
@@ -226,7 +276,7 @@ function MembersPage() {
           </div>
         </div>
       </div>
-      <FooterThree />
+    
     </>
   );
 }

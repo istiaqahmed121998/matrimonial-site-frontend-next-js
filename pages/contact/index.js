@@ -34,7 +34,6 @@ let infoListContent = [
 function ContactUs(props) {
   return (
     <>
-      <HeaderOne />
       <PageHeader title={"CONTACT US"} curPage={"CONTACT"} />
       <div className="info-section padding-top padding-bottom">
         <div className="container">
@@ -89,7 +88,6 @@ function ContactUs(props) {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

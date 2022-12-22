@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const title = "Group";
 
@@ -97,7 +97,7 @@ class ActiveGroup extends Component {
                                                 </div>
                                             </div>
                                             <div className="right">
-                                                <Link to="/group-single"><h6>{val.title}</h6></Link>
+                                                <Link href="/group-single"><h6>{val.title}</h6></Link>
                                                 <span>{val.activety}</span>
                                             </div>
                                         </div>
@@ -116,7 +116,7 @@ class ActiveGroup extends Component {
                                                 </div>
                                             </div>
                                             <div className="right">
-                                                <Link to="/group-single"><h6>{val.title}</h6></Link>
+                                                <Link href="/group-single"><h6>{val.title}</h6></Link>
                                                 <span>{val.activety}</span>
                                             </div>
                                         </div>

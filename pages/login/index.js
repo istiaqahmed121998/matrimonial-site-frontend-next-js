@@ -1,9 +1,9 @@
 import  Link  from "next/link";
 import { useState } from "react";
-
+import Image from "next/image";
 const title = "Welcome to Ollya";
 const otherTitle = "Sign up with your email";
-
+import logoImage from '../../public/assets/images/logo/logo.png';
 function LogIn() {
 
   const [userEmail,setUserEmail]=useState('')
@@ -17,7 +17,7 @@ function LogIn() {
               <div className="col-lg-8 col-7">
                 <div className="logo">
                   <Link href="/">
-                    <img src="assets/images/logo/logo.png" alt="logo" />
+                    <Image src={logoImage} alt="logo" />
                   </Link>
                 </div>
               </div>

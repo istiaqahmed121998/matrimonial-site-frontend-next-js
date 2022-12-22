@@ -141,9 +141,6 @@ function WorkSection() {
                   width={40}
                   height={40}
                   quality={100}
-                  style={{
-                    height: "auto",
-                  }}
                 />
                 <span>Live The Story</span>
               </button>

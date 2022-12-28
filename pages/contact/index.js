@@ -1,5 +1,3 @@
-import Footer from "../../component/layout/footer";
-import HeaderOne from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import GoogleMap from "../../component/section/googlemap";
 

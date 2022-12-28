@@ -12,7 +12,7 @@ const labelchangethree = "Age";
 const labelchangefour = "Country";
 const btnText = "Find Your Partner";
 
-const imgLink = "/assets/images/banner/wedding-vector.webp";
+import imgLink from "../../public/assets/images/banner/wedding-vector.webp"
 const imgAlt = "Dating Thumb";
 
 function BannerOne() {
@@ -148,8 +148,6 @@ function BannerOne() {
               <Image
                 src={imgLink}
                 alt={imgAlt}
-                width={634}
-                height={634}
                 sizes="100vw"
                 quality={100}
                 style={{

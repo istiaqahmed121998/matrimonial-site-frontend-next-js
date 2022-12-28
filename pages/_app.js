@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useSWR, { SWRConfig } from "swr";
+import { SWRConfig } from "swr";
 import axios from "../component/api/axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../public/assets/css/style.css";
@@ -33,7 +33,7 @@ export default function App({ Component, pageProps, ...appProps }) {
         fetcher: fetcher,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
-         revalidateIfStale: false,
+        revalidateIfStale: false,
       }}
     >
       <Layout>

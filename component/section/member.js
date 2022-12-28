@@ -115,10 +115,10 @@ function MemberSection() {
                         alt={imgAlt}
                         width={220}
                         height={220}
-                        quality={50}
+                        quality={100}
                         style={{
-                            height: "auto",
-                          }}
+                          height: "auto",
+                        }}
                       />
                       <span className="member__activity">{activity}</span>
                     </div>

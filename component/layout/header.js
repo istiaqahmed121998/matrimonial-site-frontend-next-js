@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import logoLink from "../../public/assets/images/logo/banner_logo.png";
 function HeaderOne() {
   useEffect(() => {
     window.addEventListener("scroll", function () {
@@ -10,7 +11,7 @@ function HeaderOne() {
         document
           .querySelector(".header")
           .classList.add(["header-fixed"], ["animated"], ["fadeInDown"]);
-      } else if(selection) {
+      } else if (selection) {
         document
           .querySelector(".header")
           .classList.remove(["header-fixed"], ["animated"], ["fadeInDown"]);
@@ -26,10 +27,10 @@ function HeaderOne() {
           <nav className="navbar navbar-expand-lg">
             <Link className="navbar-brand" href="/">
               <Image
-                src="/assets/images/logo/logo.png"
-                alt="logo"
-                width="93"
-                height="23"
+                src={logoLink}
+                alt="Dhanmondi Marriage Media"
+                width={160}
+                height={20}
               />
             </Link>
             <button

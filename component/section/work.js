@@ -6,31 +6,31 @@ let WorkSectionContentListOne = [
     imgUrl: "/assets/images/work/05.png",
     imgAlt: "Dating Thumb",
     title: "Search Your Partner",
-    desc: "The simple steps to follow to have great experience using ollya. all you have to do is follows your gut and awesome your heart!",
+    desc: "The simple steps to follow to have great experience using Dhanmondi Media. Search your preferred partner by location, education, interest and so on",
   },
 ];
 let WorkSectionContentListTwo = [
   {
-    imgUrl: "/assets/images/work/06.png",
+    imgUrl: "/assets/images/work/match.png",
     imgAlt: "Dating Thumb",
     title: "100% Match People",
-    desc: "The simple steps to follow to have great experience using ollya. all you have to do is follows your gut and awesome your heart!",
+    desc: "The simple steps to follow to have great experience using Dhanmondi Media. all you have to do is follows your gut and awesome your heart!",
   },
 ];
 let WorkSectionContentListThree = [
   {
-    imgUrl: "/assets/images/work/07.png",
+    imgUrl: "/assets/images/work/life_partner.png",
     imgAlt: "Dating Thumb",
     title: "Find Out Partner",
-    desc: "The simple steps to follow to have great experience using ollya. all you have to do is follows your gut and awesome your heart!",
+    desc: "The simple steps to follow to have great experience using Dhanmondi Media. all you have to do is follows your gut and awesome your heart!",
   },
 ];
 let WorkSectionContentListFour = [
   {
-    imgUrl: "/assets/images/work/08.png",
+    imgUrl: "/assets/images/work/story.png",
     imgAlt: "Dating Thumb",
     title: "Live The Story",
-    desc: "The simple steps to follow to have great experience using ollya. all you have to do is follows your gut and awesome your heart!",
+    desc: "The simple steps to follow to have great experience using Dhanmondi Media. all you have to do is follows your gut and awesome your heart!",
   },
 ];
 

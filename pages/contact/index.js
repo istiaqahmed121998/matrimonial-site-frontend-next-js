@@ -69,9 +69,9 @@ function ContactUs({ contacts }) {
                     </h6>
                     <div className="contact-content">
                       {contacts.map((contact, j) => (
-                        <>
+                        <div key={j}>
                           <p>{contact[val.key]}</p>
-                        </>
+                        </div>
                       ))}
                     </div>
                   </div>

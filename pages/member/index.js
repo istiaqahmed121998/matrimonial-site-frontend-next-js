@@ -29,34 +29,6 @@ function MembersPage() {
       activity: "Active",
       className: "member__activity",
     },
-    {
-      imgUrl: "/assets/images/member/home2/02.jpg",
-      imgAlt: "Dating Thumb",
-      title: "Angel Mili",
-      activity: "20 Minutes Ago",
-      className: "member__activity member__activity--ofline",
-    },
-    {
-      imgUrl: "/assets/images/member/home2/03.jpg",
-      imgAlt: "Dating Thumb",
-      title: "Kim Knudsen",
-      activity: "Active",
-      className: "member__activity",
-    },
-    {
-      imgUrl: "/assets/images/member/home2/04.jpg",
-      imgAlt: "Dating Thumb",
-      title: "Umme Nishat",
-      activity: "Active",
-      className: "member__activity",
-    },
-    {
-      imgUrl: "/assets/images/member/home2/05.jpg",
-      imgAlt: "Dating Thumb",
-      title: "Sajahan Sagor",
-      activity: "55 Minutes Ago",
-      className: "member__activity member__activity--ofline",
-    },
   ]);
   const [iAm, setIAm] = useState("self");
   const [gender, setGender] = useState("female");

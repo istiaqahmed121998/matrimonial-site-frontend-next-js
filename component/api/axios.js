@@ -13,6 +13,10 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+axios.interceptors.request.use((config) => {
+	config.headers['Accept-Encoding'] = '*';
+	return config;
+});
 
 export default {
   axios: axios.get,

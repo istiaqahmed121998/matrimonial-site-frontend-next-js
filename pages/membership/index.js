@@ -147,7 +147,6 @@ export async function getStaticProps() {
     props: {
       memberships,
     },
-    revalidate: 31536000,
   };
 }
 

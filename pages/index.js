@@ -8,13 +8,14 @@ import WorkSectionTwo from "../component/section/worktwo";
 export default function Home() {
   return (
     <>
+    
     <Head>
-      <title>Dhanmondi Marriage Media</title>
+      <title>Dhanmondi Marriage Media - The most popular matrimonial site in Bangladesh</title>
     </Head>
       <BannerOne />
       <AboutSection />
       <WorkSection />
-      {/* <MemberSection /> */}
+      <MemberSection />
       <WorkSectionTwo />
     </>
   );

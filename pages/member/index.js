@@ -1,5 +1,5 @@
 import Link from "next/link";
-import useSWR from 'swr';
+import useSWR from "swr";
 import PageHeader from "../../component/layout/pageheader";
 import AboutSectionFour from "../../component/section/aboutfour";
 import Pagination from "../../component/section/pagination";
@@ -11,14 +11,15 @@ import HeaderOne from "../../component/layout/header";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SelectIAm from "../../component/select/SelectIAm";
+import Head from "next/head";
 
 function MembersPage() {
-  const { data, error } = useSWR('/users')
+  const { data, error } = useSWR("/users");
   function modalview() {
     document.querySelector(".modal").classList.toggle("show");
     document.querySelector("body").classList.toggle("overlay");
   }
-  
+
   const [sortBy, setSortBy] = useState("Newest");
   const [MemberContentList, setmemberContentList] = useState([
     {
@@ -94,7 +95,9 @@ function MembersPage() {
 
   return (
     <>
-
+      <Head>
+        <title>Members - Dhanmondi Marriage Media</title>
+      </Head>
       <PageHeader title={"Ollya All Members"} curPage={"All Members"} />
       <AboutSectionFour />
       <div className="member member--style2 padding-top padding-bottom">
@@ -231,13 +234,19 @@ function MembersPage() {
                     <div className="col">
                       <label>I am on behalf of</label>
                       <div className="banner__inputlist">
-                        <SelectIAm select={iAm} handleChange={handleChangeIAm} />
+                        <SelectIAm
+                          select={iAm}
+                          handleChange={handleChangeIAm}
+                        />
                       </div>
                     </div>
                     <div className="col">
                       <label>Looking for</label>
                       <div className="banner__inputlist">
-                        <SelectGender select={gender} handleChange={handleChangeGender} />
+                        <SelectGender
+                          select={gender}
+                          handleChange={handleChangeGender}
+                        />
                       </div>
                     </div>
                     <div className="col">
@@ -245,12 +254,18 @@ function MembersPage() {
                       <div className="row g-3">
                         <div className="col-6">
                           <div className="banner__inputlist">
-                            <SelectAge select={ageFrom} handleChange={handleChangeAgeFrom} />
+                            <SelectAge
+                              select={ageFrom}
+                              handleChange={handleChangeAgeFrom}
+                            />
                           </div>
                         </div>
                         <div className="col-6">
                           <div className="banner__inputlist">
-                            <SelectAge select={ageTo} handleChange={handleChangeAgeTo} />
+                            <SelectAge
+                              select={ageTo}
+                              handleChange={handleChangeAgeTo}
+                            />
                           </div>
                         </div>
                       </div>
@@ -258,7 +273,10 @@ function MembersPage() {
                     <div className="col">
                       <label>Country</label>
                       <div className="banner__inputlist">
-                        <SelectCountry select={country} handleChange={handleChangeCountry} />
+                        <SelectCountry
+                          select={country}
+                          handleChange={handleChangeCountry}
+                        />
                       </div>
                     </div>
                     <div className="col">
@@ -276,7 +294,6 @@ function MembersPage() {
           </div>
         </div>
       </div>
-    
     </>
   );
 }

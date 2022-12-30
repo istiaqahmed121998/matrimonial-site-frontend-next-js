@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
-
+import Image from "next/image";
 const newstitle = "Newsletter Sign up";
 const jointitle = "Join Community";
-const aboutTitle = "About Ollya";
+const aboutTitle = "Dhanmondi Marriage Media";
 const aboutDesc =
-  "Ollya is a friendly dating theme based on HTML template for the community functionality";
+  "Dhanmondi Marriage Media is a platform of finding our soulmate for our life";
 const featureTitle = "Featured Members";
 const supportTitle = "Contacts & Support";
-const recentTitle = "Recent Activity";
 
 let SocialList = [
   {
@@ -16,15 +15,7 @@ let SocialList = [
     visitLink: "#",
   },
   {
-    iconName: "fa-brands fa-twitch",
-    visitLink: "#",
-  },
-  {
     iconName: "fa-brands fa-instagram",
-    visitLink: "#",
-  },
-  {
-    iconName: "fa-brands fa-dribbble",
     visitLink: "#",
   },
   {
@@ -36,33 +27,35 @@ let SocialList = [
 let AboutInfo = [
   {
     Name: "Address",
-    Details: "Suite-13 Tropical Center New Elephant Road 1205",
+    Details: `House:67/B  Flat:2B
+    Road-26(old) 15/A(New) Dhanmondi,Dhaka-1205
+    Opposite of IBN SINA Hospital`,
   },
   {
     Name: "Contact",
-    Details: "+30 226 4881 514 www.yoursitename.com",
+    Details: "+8801716591726 moududalam@gmail.com",
   },
 ];
 
 let FeatureList = [
   {
-    imgUrl: "assets/images/footer/feature/01.jpg",
+    imgUrl: "/assets/images/footer/feature/01.jpg",
     imgAlt: "Dating Thumb",
-    title: "Samantha Lee",
+    title: "Taspia Mim",
     activety: "Active",
     className: "feature__activity",
   },
   {
-    imgUrl: "assets/images/footer/feature/02.jpg",
+    imgUrl: "/assets/images/footer/feature/02.jpg",
     imgAlt: "Dating Thumb",
-    title: "Peter McMillan",
+    title: "Wasif Zahin",
     activety: "2 Hours Ago",
     className: "feature__activity feature__activity--ofline",
   },
   {
-    imgUrl: "assets/images/footer/feature/03.jpg",
+    imgUrl: "/assets/images/footer/feature/03.jpg",
     imgAlt: "Dating Thumb",
-    title: "Tluagtea Tualzik",
+    title: "Fouzia Khanom",
     activety: "Active",
     className: "feature__activity",
   },
@@ -74,42 +67,13 @@ let InfoList = [
     pageLink: "/about",
   },
   {
-    pageName: "Our Team",
-    pageLink: "#",
-  },
-  {
-    pageName: "Testimonials",
-    pageLink: "#",
+    pageName: "Membership",
+    pageLink: "/membership",
   },
   {
     pageName: "Get in Touch",
     pageLink: "/contact",
-  },
-  {
-    pageName: "FAQ",
-    pageLink: "#",
-  },
-];
-
-let RecentPost = [
-  {
-    imgUrl: "assets/images/footer/activity/01.jpg",
-    imgAlt: "Dating Thumb",
-    title: "Where to find a good...",
-    pubDate: "May 13, 2022",
-  },
-  {
-    imgUrl: "assets/images/footer/activity/02.jpg",
-    imgAlt: "Dating Thumb",
-    title: "Where to find a good...",
-    pubDate: "May 13, 2022",
-  },
-  {
-    imgUrl: "assets/images/footer/activity/03.jpg",
-    imgAlt: "Dating Thumb",
-    title: "Where to find a good...",
-    pubDate: "May 13, 2022",
-  },
+  }
 ];
 
 function FooterThree() {
@@ -157,8 +121,8 @@ function FooterThree() {
                     <ul>
                       {SocialList.map((val, i) => (
                         <li key={i}>
-                          <Link href={`${val.visitLink}`}>
-                            <i className={`${val.iconName}`}></i>
+                          <Link href={val.visitLink}>
+                            <i className={val.iconName}></i>
                           </Link>
                         </li>
                       ))}
@@ -175,7 +139,7 @@ function FooterThree() {
         >
           <div className="container">
             <div className="row g-4">
-              <div className="col-lg-3 col-sm-6 col-12">
+              <div className="col-lg-5 col-sm-6 col-12">
                 <div className="footer__item footer--about">
                   <div className="footer__inner">
                     <div className="footer__content">
@@ -208,9 +172,11 @@ function FooterThree() {
                           {FeatureList.map((val, i) => (
                             <li key={i}>
                               <div className="thumb position-relative">
-                                <img
-                                  src={`${val.imgUrl}`}
-                                  alt={`${val.imgAlt}`}
+                                <Image
+                                  src={val.imgUrl}
+                                  alt={val.imgAlt}
+                                  height={60}
+                                  width={60}
                                 />
                                 <span className={val.className}></span>
                               </div>
@@ -228,7 +194,7 @@ function FooterThree() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 col-sm-6 col-12">
+              <div className="col-lg-4 col-sm-6 col-12">
                 <div className="footer__item footer--support">
                   <div className="footer__inner">
                     <div className="footer__content">
@@ -251,50 +217,16 @@ function FooterThree() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 col-sm-6 col-12">
-                <div className="footer__item footer--activity">
-                  <div className="footer__inner">
-                    <div className="footer__content">
-                      <div className="footer__content--title">
-                        <h4>{recentTitle}</h4>
-                      </div>
-                      <div className="footer__content--desc">
-                        <ul>
-                          {RecentPost.map((val, i) => (
-                            <li key={i}>
-                              <div className="thumb">
-                                <Link href="/group-single">
-                                  <img
-                                    src={`${val.imgUrl}`}
-                                    alt={`${val.imgAlt}`}
-                                  />
-                                </Link>
-                              </div>
-                              <div className="content">
-                                <Link href="/group-single">
-                                  <h6>{val.title}</h6>
-                                </Link>
-                                <p>{val.pubDate}</p>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
-
       <div className="footer__bottom py-4">
         <div className="container">
           <div className="footer__content text-center">
             <p className="mb-0">
-              All Rights Reserved &copy; <Link href="/"> Ollya </Link> || Design
-              By: CodexCoder
+              All Rights Reserved &copy; <Link href="/"> D.M.M </Link> || Design
+              By: Zenith
             </p>
           </div>
         </div>

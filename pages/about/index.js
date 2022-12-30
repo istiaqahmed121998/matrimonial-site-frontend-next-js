@@ -1,3 +1,4 @@
+import Head from "next/head";
 import FooterThree from "../../component/layout/footerthree";
 import HeaderOne from "../../component/layout/header";
 // import PageHeader from "../component/layout/pageheader";
@@ -11,7 +12,9 @@ import HeaderTwo from "../../component/layout/headertwo";
 export default function about() {
   return (
     <>
- 
+       <Head>
+        <title>Dhanmondi Marriage Media - About</title>
+      </Head>
     </>
   );
 }

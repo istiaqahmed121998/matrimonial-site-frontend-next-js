@@ -1,7 +1,7 @@
 import Image from "next/image";
 const title = "Dhanmondi Media Super Powers";
 const subtitle =
-  "Our dating platform is like a breath of fresh air. Clean and trendy design with ready to use features we are sure you will love.";
+  "Our Matrimonial platform is like a breath of fresh air. Clean and trendy design with ready to use features we are sure you will find one.";
 
 let AboutContentList = [
   {

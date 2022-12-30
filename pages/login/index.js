@@ -4,12 +4,18 @@ import Image from "next/image";
 const title = "Welcome to Ollya";
 const otherTitle = "Sign up with your email";
 import logoImage from '../../public/assets/images/logo/logo.png';
+import Head from "next/head";
 function LogIn() {
 
   const [userEmail,setUserEmail]=useState('')
   const [userPass,setUserPass]=useState('')
  
     return (
+      <>
+      <Head>
+      <title>Login - Dhanmondi Marriage Media</title>
+      </Head>
+    
       <section className="log-reg">
         <div className="top-menu-area">
           <div className="container">
@@ -99,7 +105,7 @@ function LogIn() {
             </div>
           </div>
         </div>
-      </section>
+      </section>  </>
     );
   
 }

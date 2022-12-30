@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 const title = "Ops! This Page Not Pound";
 const desc = "We are Really Sorry But the Page you Requested is Missing :(";
 const btnText = "Go Back to Home";
@@ -13,7 +13,7 @@ function ErrorPage() {
           <div className="col-lg-7 ">
             <div className="log-reg-inner">
               <div className="main-thumb mb-5">
-                <img src="assets/images/404.png" alt="datting thumb" />
+                <Image src="/assets/images/404.png" width={594} height={244} alt="Dhanmondi Matrimonial Media error" />
               </div>
               <div className="main-content inloginp">
                 <div className="text-content text-center">

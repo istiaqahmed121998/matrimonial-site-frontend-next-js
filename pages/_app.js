@@ -20,7 +20,7 @@ export default function App({ Component, pageProps, ...appProps }) {
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.min.js");
   }, []);
-  if ([`/login`, `/register`].includes(appProps.router.pathname))
+  if ([`/login`, `/register`, `/404`].includes(appProps.router.pathname))
     return (
       <>
         <Component {...pageProps} /> <ToastContainer />

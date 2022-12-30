@@ -1,0 +1,7 @@
+Sitemap: https://www.dhanmondimedia.com/sitemap.xml
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
+Disallow: /dashboard/*

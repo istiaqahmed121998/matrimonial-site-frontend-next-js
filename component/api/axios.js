@@ -4,7 +4,7 @@ axios.interceptors.request.use(
     // Do something before request is sent
     // config.headers.Authorization = `Bearer ${your_token}`;
     // OR config.headers.common['Authorization'] = `Bearer ${your_token}`;
-    config.baseURL = 'http://localhost:3001/api';
+    config.baseURL = process.env.API_URL;
 
     return config;
   },

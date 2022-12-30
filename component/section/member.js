@@ -3,52 +3,52 @@ import { useState } from "react";
 import Image from "next/image";
 const title = "Most Popular Members";
 const desc =
-  "Learn from them and try to make it to this board. This will for sure boost you visibility and increase your chances to find you loved one.";
+  "This will for sure boost you visibility and increase your chances to find you perfect one.";
 const btnText = "See More Popular";
 
 let MemberDataList = [
   {
     id: 1,
     imgUrl: "/assets/images/member/male/01.jpg",
-    imgAlt: "Dating Member",
+    imgAlt: "Marriage Media Member",
     activity: "Online",
-    name: "Smith Jhonson",
+    name: "Abir Ahmed",
     age: "32 Years old",
     catagory: "male",
   },
   {
     id: 2,
     imgUrl: "/assets/images/member/female/01.jpg",
-    imgAlt: "Dating Member",
+    imgAlt: "Marriage Media Member",
     activity: "Online",
-    name: "Arika Q Smith",
+    name: "Maria Sultana",
     age: "28 Years old",
     catagory: "female",
   },
   {
     id: 3,
     imgUrl: "/assets/images/member/male/02.jpg",
-    imgAlt: "Dating Member",
+    imgAlt: "Marriage Media Member",
     activity: "Online",
-    name: "William R Show",
+    name: "Isfar Humaiyun",
     age: "27 Years old",
     catagory: "male",
   },
   {
     id: 4,
     imgUrl: "/assets/images/member/female/02.jpg",
-    imgAlt: "Dating Member",
+    imgAlt: "Marriage Media Member",
     activity: "Online",
-    name: "Karolin Kuhn",
+    name: "Tabassum",
     age: "21 Years old",
     catagory: "female",
   },
   {
     id: 5,
     imgUrl: "/assets/images/member/male/03.jpg",
-    imgAlt: "Dating Member",
+    imgAlt: "Marriage Media Member",
     activity: "Online",
-    name: "Dieter Hoover",
+    name: "Julfiqar Hossain",
     age: "36 Years old",
     catagory: "male",
   },
@@ -96,7 +96,7 @@ function MemberSection() {
               onClick={() => filterItem("female")}
               className="button filter-btn"
             >
-              <span className="member__radio"></span> Female{" "}
+              <span className="member__radio"></span> Female
               <span className="banner__inputlist--icon">
                 <i className="fa-solid fa-venus"></i>
               </span>
@@ -105,7 +105,7 @@ function MemberSection() {
 
           <div className="member__grid d-flex flex-wrap justify-content-center mx-12-none">
             {items.map((elem) => {
-              const { id, imgUrl, imgAlt, activity, name, age } = elem;
+              const { id, imgUrl, imgAlt, activity, name, age,catagory } = elem;
               return (
                 <div className="member__item male" key={id}>
                   <div className="member__inner">
@@ -123,11 +123,10 @@ function MemberSection() {
                       <span className="member__activity">{activity}</span>
                     </div>
                     <div className="member__content">
-                      <Link href="/member-single">
-                        <h5>{name}</h5>
-                      </Link>
+                      <h5>{name}</h5>
+
                       <p>
-                        {age} <i className="fa-solid fa-mars"></i>
+                        {age} <i className={catagory==='male'?("fa-solid fa-mars"):("fa-solid fa-venus")}></i>
                       </p>
                     </div>
                   </div>

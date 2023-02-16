@@ -135,7 +135,7 @@ function WorkSection() {
                 aria-selected="false"
               >
                 <Image
-                  src="/assets/images/work/04.png"
+                  src={"/assets/images/work/04.png"}
                   alt="dating thumb"
                   className="me-3"
                   width={40}

@@ -3,8 +3,11 @@ const path = require('path')
 const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'public/assets/sass')],
+    includePaths: [path.join(__dirname, 'styles/sass')],
   },
   poweredByHeader: false,
 }
-module.exports = nextConfig
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+module.exports = withBundleAnalyzer(nextConfig)

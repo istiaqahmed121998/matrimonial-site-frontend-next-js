@@ -33,7 +33,7 @@ let AboutInfo = [
   },
   {
     Name: "Contact",
-    Details: "+8801716591726 moududalam@gmail.com",
+    Details: "+8801716591726 alammoudud@gmail.com",
   },
 ];
 

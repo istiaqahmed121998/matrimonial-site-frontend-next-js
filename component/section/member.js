@@ -115,7 +115,7 @@ function MemberSection() {
                         alt={imgAlt}
                         width={220}
                         height={220}
-                        quality={100}
+                        quality={10}
                         style={{
                           height: "auto",
                         }}

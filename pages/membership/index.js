@@ -102,7 +102,7 @@ function MembershipPage({ memberships }) {
                   <div className="membership__item">
                     <div className="membership__inner">
                       <div className="membership__head">
-                        <h4>{val.membershiptype}</h4>
+                        <h4>{val.membership_type}</h4>
                         <p>{val.validity}</p>
                       </div>
                       <div className="membership__body">
@@ -141,7 +141,7 @@ function MembershipPage({ memberships }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await axios.axios("/memberships");
+  const res = await axios.axios("/membership");
   const memberships = res.data.data;
   return {
     props: {

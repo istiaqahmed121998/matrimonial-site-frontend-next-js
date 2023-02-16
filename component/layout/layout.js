@@ -102,7 +102,7 @@ export default function Layout({
         <meta name="google-site-verification" content={google_site_verfication} />
       </Head>
 
-      <HeaderOne />
+      <HeaderOne/>
       {children}
       <FooterThree />
     </>

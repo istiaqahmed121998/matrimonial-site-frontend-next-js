@@ -6,6 +6,7 @@ import logoImage from "../../public/assets/images/logo/logo.png";
 import Link from "next/link";
 import axios from "../../component/api/axios";
 import Head from "next/head";
+import {useRouter} from 'next/router'
 const title = "Welcome to Dhanmondi Marriage Media";
 const desc =
   "Let's create your profile! Just fill in the fields below, and we’ll get a new account.";
@@ -18,9 +19,8 @@ function Register() {
   const [regConPassword, setRegConPassword] = useState("");
   const [iAm, setIAm] = useState("self");
   const [lookingFor, setLookingFor] = useState("Bride");
-  const [DOB, setDOB] = useState("");
   const [number, setNumber] = useState("");
-
+  const router = useRouter()
   function onChangeValue(event) {
     setLookingFor(event.target.value);
   }
@@ -30,32 +30,34 @@ function Register() {
 
   async function onSubmitHandler(e) {
     e.preventDefault();
+
     const user = {
-      regName,
-      DOB,
-      regEmail,
-      regPassword,
-      regConPassword,
-      iAm,
-      lookingFor,
-      number,
+      full_name: regName,
+      email: regEmail,
+      password: regPassword,
+      on_behalf_of: iAm,
+      looking_for: lookingFor,
+      contact_number: number,
     };
     try {
-      const users = await axios.post("/users", user);
-
+      if (regConPassword !== regPassword) {
+        throw Error("password doesn't match");
+      }
+      const users = await axios.post("/user", user);
       toast.success(users.data.message, {
         position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+  
         theme: "colored",
+        autoClose: 5000,
+
       });
+      setTimeout(()=>{
+        router.push('/login')
+      },1000)
+
     } catch (error) {
       console.log(error);
-      if (!error.status) {
+      if (!error.response) {
         toast.error(error.message, {
           position: "top-right",
           autoClose: 5000,
@@ -66,24 +68,40 @@ function Register() {
           progress: undefined,
           theme: "colored",
         });
-      } else {
-        toast.error(error.response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+      }
+      else {
+        if(Array.isArray(error.response.data.error)){
+          toast.error((error.response.data.error[0].FailedField.replace("." ," ")+" is "+error.response.data.error[0].Tag), {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+        else{
+          toast.error(error.response.data.error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+
       }
     }
   }
   return (
     <>
       <Head>
-        <title>Registration  - Dhanmondi Marriage Media</title>
+        <title>Registration - Dhanmondi Marriage Media</title>
       </Head>
       <section className="log-reg">
         <div className="top-menu-area">
@@ -120,7 +138,7 @@ function Register() {
                       <input
                         type="email"
                         name="email"
-                        id="item02"
+                        id="email"
                         value={regEmail}
                         onChange={(e) => {
                           setRegEmail(e.target.value);
@@ -134,27 +152,31 @@ function Register() {
                       <input
                         type="password"
                         name="password"
-                        id="item03"
+                        id="password"
                         value={regPassword}
                         onChange={(e) => {
                           setRegPassword(e.target.value);
                         }}
                         placeholder="Enter Your Password *"
                         className="my-form-control"
+                        minLength={8}
+                        maxLength="40"
                       />
                     </div>
                     <div className="form-group">
                       <label>Confirm Password*</label>
                       <input
                         type="password"
-                        name="password"
-                        id="item04"
+                        name="confirmpassword"
+                        id="confirmpassword"
                         value={regConPassword}
                         onChange={(e) => {
                           setRegConPassword(e.target.value);
                         }}
                         placeholder="Enter Your Password *"
                         className="my-form-control"
+                        minLength="8"
+                        maxLength="40"
                       />
                     </div>
                     <h4 className="content-title mt-5">Profile Details</h4>
@@ -168,6 +190,8 @@ function Register() {
                           setRegName(e.target.value);
                         }}
                         value={regName}
+                        minLength="5"
+                        maxLength="40"
                       />
                     </div>
                     <div className="form-group">
@@ -180,17 +204,8 @@ function Register() {
                           setNumber(e.target.value);
                         }}
                         value={number}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Birthday*</label>
-                      <input
-                        type="date"
-                        className="my-form-control"
-                        onChange={(e) => {
-                          setDOB(e.target.value);
-                        }}
-                        value={DOB}
+                        minLength="10"
+                        maxLength="40"
                       />
                     </div>
                     <div className="form-group">

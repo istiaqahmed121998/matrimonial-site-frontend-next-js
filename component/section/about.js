@@ -1,5 +1,5 @@
 import Image from "next/image";
-const title = "Dhanmondi Media Super Powers";
+const title = "Dhanmondi Marriage Media";
 const subtitle =
   "Our Matrimonial platform is like a breath of fresh air. Clean and trendy design with ready to use features we are sure you will find one.";
 
@@ -38,7 +38,7 @@ function AboutSection() {
           className="section__header style-2 text-center wow fadeInUp"
           data-wow-duration="1.5s"
         >
-          <h2>{title}</h2>
+          <h1>{title}</h1>
           <p>{subtitle}</p>
         </div>
         <div className="section__wrapper">

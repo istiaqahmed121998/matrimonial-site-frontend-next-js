@@ -117,7 +117,7 @@ function ContactUs({ contacts }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await axios.axios("/contacts");
+  const res = await axios.axios("/contact");
   const contacts = res.data.data;
   return {
     props: {

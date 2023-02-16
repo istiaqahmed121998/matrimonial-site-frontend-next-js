@@ -2,7 +2,18 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logoLink from "../../public/assets/images/logo/banner_logo.png";
-function HeaderOne() {
+import useUser from "../../lib/useUser";
+import { useRouter } from "next/router";
+export default function HeaderOne() {
+  const { user, mutateUser } = useUser();
+  const router = useRouter();
+  const logOut = async (e) => {
+    e.preventDefault();
+    const res = await fetch("/api/logout", {
+      method: "POST",
+    });
+    mutateUser(res, false);
+  };
   useEffect(() => {
     window.addEventListener("scroll", function () {
       var value = window.scrollY;
@@ -18,6 +29,8 @@ function HeaderOne() {
       }
     });
   }, []);
+  // const fetcher = url => fetch(url).then(r => r.json())
+  // const { data: user, mutate: mutateUser } = useSWR("/api/user",fetcher);
   const [loggedIn, setLoggedIn] = useState(true);
 
   return (
@@ -29,8 +42,8 @@ function HeaderOne() {
               <Image
                 src={logoLink}
                 alt="Dhanmondi Marriage Media"
-                width={160}
-                height={20}
+                width={"160"}
+                height={"auto"}
               />
             </Link>
             <button
@@ -75,10 +88,10 @@ function HeaderOne() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  {!loggedIn ? "My Account" : "Name"}
+                  {!user?.isLoggedIn === true ? "My Account" : user?.userinfo.full_name}
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="moreoption">
-                  {loggedIn ? (
+                  {user?.isLoggedIn === true ? (
                     <>
                       <li>
                         <Link className="dropdown-item" href="/profile">
@@ -91,9 +104,7 @@ function HeaderOne() {
                       <li>
                         <a
                           className="dropdown-item"
-                          onClick={(e) => {
-                            setLoggedIn(false);
-                          }}
+                          onClick={logOut}
                         >
                           Sign out
                         </a>
@@ -122,5 +133,3 @@ function HeaderOne() {
     </header>
   );
 }
-
-export default HeaderOne;
